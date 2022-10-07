@@ -1,5 +1,5 @@
 const boom = require('@hapi/boom');
-
+const pool = require('../libs/postgres.pool')
 class CategoryService {
 
   constructor(){
@@ -9,7 +9,9 @@ class CategoryService {
   }
 
   async find() {
-    return [];
+    const query = 'SELECT * FROM task'
+    const rta = await this.pool.query(query);
+    return rta.pool;
   }
 
   async findOne(id) {
