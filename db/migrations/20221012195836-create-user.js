@@ -1,19 +1,14 @@
 'use strict';
 
-const { UserSchema, USER_TABLE } =require('./../models/user.model');
+const { UserSchema, USER_TABLE } = require('./../models/user.model');
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  async up (queryInterface, Sequelize) {
+  async up (queryInterface) {
     await queryInterface.createTable(USER_TABLE, UserSchema);
   },
 
   async down (queryInterface, Sequelize) {
-    /**
-     * Add reverting commands here.
-     *
-     * Example:
-     * await queryInterface.dropTable('users');
-     */
+    await queryInterface.drop(USER_TABLE);
   }
 };
